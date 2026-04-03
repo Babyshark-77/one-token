@@ -15,8 +15,8 @@ window.renderPartnerPage = function(){
     <div class="partner-hero-content section-inner">
       <div class="partner-hero-text">
         <span class="partner-label">PARTNER PROGRAM</span>
-        <h1 class="partner-hero-title">成为 One Token<br>Türkiye 合伙人</h1>
-        <p class="partner-hero-sub">从个人推广到城市合作，五级阶梯激励，最高可享 <strong>50% 直推返佣 + 25% 二级返佣</strong>。<br>支持 <strong>USD 结算</strong>，更适合土耳其本地市场拓展与长期经营。</p>
+        <h1 class="partner-hero-title">成为 One Token<br>全球合伙人</h1>
+        <p class="partner-hero-sub">从个人推广到区域合作，五级阶梯激励，最高可享 <strong>50% 直推返佣 + 25% 二级返佣</strong>。<br>支持 <strong>数字资产结算与透明收益分配</strong>，支持全球市场拓展与长期经营协同。</p>
         <div class="partner-hero-btns">
           <a class="btn btn-primary partner-btn-glow" onclick="document.getElementById('partnerContact').scrollIntoView({behavior:'smooth'})">立即咨询合伙政策</a>
           <a class="btn btn-secondary partner-btn-outline" onclick="document.getElementById('partnerTiers').scrollIntoView({behavior:'smooth'})">查看返佣路径</a>
@@ -69,30 +69,32 @@ window.renderPartnerPage = function(){
               </radialGradient>
               <filter id="heroMapGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
-            <!-- Turkey outline - stronger -->
-            <path d="M50,120 Q80,80 120,85 Q150,70 180,75 Q220,65 260,70 Q300,60 340,80 Q360,90 350,110 Q340,130 300,125 Q280,135 260,125 Q240,130 220,120 Q200,135 180,125 Q150,130 120,125 Q90,135 60,130 Z" fill="rgba(59,130,246,0.15)" stroke="rgba(96,165,250,0.45)" stroke-width="1.5"/>
-            <!-- Inner detail lines -->
-            <path d="M120,85 Q140,95 160,90" stroke="rgba(96,165,250,0.15)" stroke-width="0.5" fill="none"/>
-            <path d="M180,75 Q200,85 220,80" stroke="rgba(96,165,250,0.15)" stroke-width="0.5" fill="none"/>
-            <!-- City dots - stronger -->
-            <circle cx="140" cy="90" r="16" fill="url(#cityGlow)" class="city-pulse"/>
-            <circle cx="140" cy="90" r="5" fill="#3B82F6" filter="url(#heroMapGlow)"/>
-            <circle cx="140" cy="90" r="2" fill="#fff"/>
-            <text x="140" y="76" text-anchor="middle" fill="#CBD5E1" font-size="9" font-weight="700">Istanbul</text>
-            <circle cx="210" cy="88" r="13" fill="url(#cityGlow)" class="city-pulse"/>
-            <circle cx="210" cy="88" r="4.5" fill="#10B981" filter="url(#heroMapGlow)"/>
-            <circle cx="210" cy="88" r="1.5" fill="#fff"/>
-            <text x="210" y="76" text-anchor="middle" fill="#CBD5E1" font-size="9" font-weight="700">Ankara</text>
-            <circle cx="270" cy="105" r="11" fill="url(#cityGlow)" class="city-pulse"/>
-            <circle cx="270" cy="105" r="4" fill="#F59E0B" filter="url(#heroMapGlow)"/>
-            <circle cx="270" cy="105" r="1.5" fill="#fff"/>
-            <text x="270" y="95" text-anchor="middle" fill="#CBD5E1" font-size="9" font-weight="700">Antalya</text>
-            <circle cx="120" cy="100" r="9" fill="url(#cityGlow)" class="city-pulse"/>
-            <circle cx="120" cy="100" r="3.5" fill="#8B5CF6" filter="url(#heroMapGlow)"/>
-            <text x="120" y="113" text-anchor="middle" fill="#CBD5E1" font-size="8" font-weight="700">Izmir</text>
-            <circle cx="160" cy="82" r="8" fill="url(#cityGlow)" class="city-pulse"/>
-            <circle cx="160" cy="82" r="3" fill="#EC4899" filter="url(#heroMapGlow)"/>
-            <text x="173" y="79" text-anchor="start" fill="#CBD5E1" font-size="8" font-weight="700">Bursa</text>
+            <!-- Removed Turkey outline, drawing network nodes -->
+            <path d="M50,100 Q150,50 350,150" fill="none" stroke="rgba(96,165,250,0.15)" stroke-width="1.5"/>
+            <path d="M80,150 Q200,200 320,80" fill="none" stroke="rgba(96,165,250,0.15)" stroke-width="1.5"/>
+            
+            <circle cx="100" cy="110" r="16" fill="url(#cityGlow)" class="city-pulse"/>
+            <circle cx="100" cy="110" r="5" fill="#3B82F6" filter="url(#heroMapGlow)"/>
+            <circle cx="100" cy="110" r="2" fill="#fff"/>
+            <text x="100" y="90" text-anchor="middle" fill="#CBD5E1" font-size="9" font-weight="700">London</text>
+            
+            <circle cx="180" cy="140" r="13" fill="url(#cityGlow)" class="city-pulse"/>
+            <circle cx="180" cy="140" r="4.5" fill="#10B981" filter="url(#heroMapGlow)"/>
+            <circle cx="180" cy="140" r="1.5" fill="#fff"/>
+            <text x="180" y="120" text-anchor="middle" fill="#CBD5E1" font-size="9" font-weight="700">Dubai</text>
+            
+            <circle cx="280" cy="95" r="11" fill="url(#cityGlow)" class="city-pulse"/>
+            <circle cx="280" cy="95" r="4" fill="#F59E0B" filter="url(#heroMapGlow)"/>
+            <circle cx="280" cy="95" r="1.5" fill="#fff"/>
+            <text x="280" y="80" text-anchor="middle" fill="#CBD5E1" font-size="9" font-weight="700">Singapore</text>
+            
+            <circle cx="240" cy="160" r="9" fill="url(#cityGlow)" class="city-pulse"/>
+            <circle cx="240" cy="160" r="3.5" fill="#8B5CF6" filter="url(#heroMapGlow)"/>
+            <text x="240" y="180" text-anchor="middle" fill="#CBD5E1" font-size="8" font-weight="700">Hong Kong</text>
+            
+            <circle cx="340" cy="120" r="8" fill="url(#cityGlow)" class="city-pulse"/>
+            <circle cx="340" cy="120" r="3" fill="#EC4899" filter="url(#heroMapGlow)"/>
+            <text x="350" y="125" text-anchor="start" fill="#CBD5E1" font-size="8" font-weight="700">Kuala Lumpur</text>
             <!-- Connection lines - stronger -->
             <line x1="140" y1="90" x2="210" y2="88" stroke="rgba(96,165,250,0.3)" stroke-width="1" stroke-dasharray="4 3" class="conn-line"/>
             <line x1="210" y1="88" x2="270" y2="105" stroke="rgba(52,211,153,0.25)" stroke-width="1" stroke-dasharray="4 3" class="conn-line"/>
@@ -162,8 +164,8 @@ window.renderPartnerPage = function(){
               <button class="calc-tier-btn active" data-tier="0" onclick="window._calcTier(0)">V1</button>
               <button class="calc-tier-btn" data-tier="1" onclick="window._calcTier(1)">V2</button>
               <button class="calc-tier-btn" data-tier="2" onclick="window._calcTier(2)">V3</button>
-              <button class="calc-tier-btn" data-tier="3" onclick="window._calcTier(3)">市级代理</button>
-              <button class="calc-tier-btn" data-tier="4" onclick="window._calcTier(4)">区域总代</button>
+              <button class="calc-tier-btn" data-tier="3" onclick="window._calcTier(3)">城市合伙人</button>
+              <button class="calc-tier-btn" data-tier="4" onclick="window._calcTier(4)">区域合伙人</button>
             </div>
           </div>
           <div class="calc-group">
@@ -257,25 +259,25 @@ window.renderPartnerPage = function(){
           </div>
           <div class="tier-hover-tip">高级合伙人</div>
         </div>
-        <div class="tier-card tier-city" data-tier-hover="适合线下门店与本地资源方">
-          <div class="tier-badge badge-gold">市级</div>
-          <h4>市级代理</h4>
-          <div class="tier-condition">线下门店 + 押金</div>
+        <div class="tier-card tier-city" data-tier-hover="适合线下渠道与本地资源方">
+          <div class="tier-badge badge-gold">City</div>
+          <h4>城市合伙人</h4>
+          <div class="tier-condition">具备城市资源 / 团队拓展能力</div>
           <div class="tier-rates">
             <div class="tier-rate"><span>直推</span><strong>40%</strong></div>
             <div class="tier-rate"><span>二级</span><strong>20%</strong></div>
           </div>
-          <div class="tier-hover-tip">适合线下门店与本地资源方</div>
+          <div class="tier-hover-tip">适合线下渠道与区域资源方</div>
         </div>
         <div class="tier-card tier-region" data-tier-hover="区域合作与总部直签机会">
-          <div class="tier-badge badge-gold">总代</div>
-          <h4>区域总代</h4>
-          <div class="tier-condition">开设 3 家市级店</div>
+          <div class="tier-badge badge-gold">Region</div>
+          <h4>区域合伙人</h4>
+          <div class="tier-condition">具备区域合作与多团队运营能力</div>
           <div class="tier-rates">
             <div class="tier-rate"><span>直推</span><strong>50%</strong></div>
             <div class="tier-rate"><span>二级</span><strong>25%</strong></div>
           </div>
-          <div class="tier-hover-tip">区域合作与总部直签机会</div>
+          <div class="tier-hover-tip">资源深耕与多地区节点联动</div>
         </div>
       </div>
     </div>
@@ -301,15 +303,15 @@ window.renderPartnerPage = function(){
           <div class="benefit-icon benefit-icon-lg" style="background:rgba(59,130,246,0.15);color:#3B82F6;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           </div>
-          <h4>本地化物料支持</h4>
-          <p>提供土耳其语宣传素材与基础推广内容，降低本地化运营门槛。</p>
+          <h4>多语言物料支持</h4>
+          <p>提供多语言宣传素材与基础推广内容，降低全球化运营门槛。</p>
         </div>
         <div class="benefit-card benefit-card-lg">
           <div class="benefit-icon benefit-icon-lg" style="background:rgba(236,72,153,0.15);color:#EC4899;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <h4>城市合作机会</h4>
-          <p>优质区域可申请更高合作资格与本地协同，共同推进市场覆盖。</p>
+          <h4>区域合作机会</h4>
+          <p>优质区域可申请更高合作资格与市场协同，共同推进全球市场覆盖。</p>
         </div>
         <div class="benefit-card benefit-card-lg">
           <div class="benefit-icon benefit-icon-lg" style="background:rgba(6,182,212,0.15);color:#06B6D4;">
@@ -351,53 +353,41 @@ window.renderPartnerPage = function(){
               </filter>
             </defs>
             <!-- Turkey shape (simplified) -->
-            <path d="M60,170 Q100,110 160,115 Q200,90 250,100 Q300,80 350,95 Q400,85 440,100 Q480,90 520,110 Q550,125 540,155 Q530,175 490,170 Q460,185 430,175 Q400,185 370,170 Q340,185 310,175 Q280,185 250,170 Q220,185 190,175 Q160,185 130,175 Q100,190 70,180 Z" fill="rgba(59,130,246,0.06)" stroke="rgba(59,130,246,0.15)" stroke-width="1.5"/>
-            <!-- Grid lines -->
+            <!-- Global map style connections abstract -->
+            <path d="M100,100 Q300,80 500,140 Q350,220 150,200 Z" fill="rgba(59,130,246,0.03)" stroke="rgba(59,130,246,0.15)" stroke-width="1.5"/>
             <line x1="50" y1="130" x2="560" y2="130" stroke="rgba(59,130,246,0.04)" stroke-width="0.5"/>
             <line x1="50" y1="160" x2="560" y2="160" stroke="rgba(59,130,246,0.04)" stroke-width="0.5"/>
-            <line x1="200" y1="80" x2="200" y2="200" stroke="rgba(59,130,246,0.04)" stroke-width="0.5"/>
-            <line x1="350" y1="80" x2="350" y2="200" stroke="rgba(59,130,246,0.04)" stroke-width="0.5"/>
 
-            <!-- Istanbul -->
-            <circle cx="175" cy="120" r="22" fill="url(#mapCityGlow)" class="city-pulse"/>
-            <circle cx="175" cy="120" r="7" fill="#3B82F6" filter="url(#mapGlow)"/>
-            <circle cx="175" cy="120" r="3" fill="#fff"/>
-            <text x="175" y="102" text-anchor="middle" fill="#E2E8F0" font-size="12" font-weight="700">Istanbul</text>
-            <text x="175" y="148" text-anchor="middle" fill="#10B981" font-size="9" font-weight="600">已覆盖</text>
+            <circle cx="150" cy="110" r="22" fill="url(#mapCityGlow)" class="city-pulse"/>
+            <circle cx="150" cy="110" r="7" fill="#3B82F6" filter="url(#mapGlow)"/>
+            <text x="150" y="90" text-anchor="middle" fill="#E2E8F0" font-size="12" font-weight="700">London</text>
+            <text x="150" y="140" text-anchor="middle" fill="#10B981" font-size="9" font-weight="600">已覆盖</text>
 
-            <!-- Ankara -->
-            <circle cx="310" cy="118" r="18" fill="url(#mapCityGlowGreen)" class="city-pulse"/>
-            <circle cx="310" cy="118" r="6" fill="#10B981" filter="url(#mapGlow)"/>
-            <circle cx="310" cy="118" r="2.5" fill="#fff"/>
-            <text x="310" y="100" text-anchor="middle" fill="#E2E8F0" font-size="12" font-weight="700">Ankara</text>
-            <text x="310" y="142" text-anchor="middle" fill="#10B981" font-size="9" font-weight="600">已覆盖</text>
+            <circle cx="280" cy="130" r="18" fill="url(#mapCityGlowGreen)" class="city-pulse"/>
+            <circle cx="280" cy="130" r="6" fill="#10B981" filter="url(#mapGlow)"/>
+            <text x="280" y="110" text-anchor="middle" fill="#E2E8F0" font-size="12" font-weight="700">Dubai</text>
+            <text x="280" y="155" text-anchor="middle" fill="#10B981" font-size="9" font-weight="600">已覆盖</text>
 
-            <!-- Antalya -->
-            <circle cx="350" cy="165" r="16" fill="url(#mapCityGlowYellow)" class="city-pulse"/>
-            <circle cx="350" cy="165" r="5" fill="#F59E0B" filter="url(#mapGlow)"/>
-            <circle cx="350" cy="165" r="2" fill="#fff"/>
-            <text x="350" y="185" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700">Antalya</text>
-            <text x="350" y="197" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="600">招募中</text>
+            <circle cx="400" cy="160" r="16" fill="url(#mapCityGlowYellow)" class="city-pulse"/>
+            <circle cx="400" cy="160" r="5" fill="#F59E0B" filter="url(#mapGlow)"/>
+            <text x="400" y="180" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700">Singapore</text>
+            <text x="400" y="195" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="600">招募中</text>
 
-            <!-- Izmir -->
-            <circle cx="145" cy="148" r="14" fill="url(#mapCityGlowYellow)" class="city-pulse"/>
-            <circle cx="145" cy="148" r="5" fill="#F59E0B" filter="url(#mapGlow)"/>
-            <circle cx="145" cy="148" r="2" fill="#fff"/>
-            <text x="115" y="162" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700">Izmir</text>
-            <text x="145" y="170" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="600">招募中</text>
+            <circle cx="480" cy="120" r="14" fill="url(#mapCityGlowYellow)" class="city-pulse"/>
+            <circle cx="480" cy="120" r="5" fill="#F59E0B" filter="url(#mapGlow)"/>
+            <text x="480" y="100" text-anchor="middle" fill="#E2E8F0" font-size="11" font-weight="700">Hong Kong</text>
+            <text x="480" y="145" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="600">招募中</text>
 
-            <!-- Bursa -->
-            <circle cx="210" cy="110" r="12" fill="url(#mapCityGlow)" class="city-pulse"/>
-            <circle cx="210" cy="110" r="4" fill="#8B5CF6" filter="url(#mapGlow)"/>
-            <circle cx="210" cy="110" r="2" fill="#fff"/>
-            <text x="228" y="107" text-anchor="start" fill="#E2E8F0" font-size="10" font-weight="700">Bursa</text>
-            <text x="228" y="118" text-anchor="start" fill="#94A3B8" font-size="9" font-weight="600">待合作</text>
+            <circle cx="220" cy="170" r="12" fill="url(#mapCityGlow)" class="city-pulse"/>
+            <circle cx="220" cy="170" r="4" fill="#8B5CF6" filter="url(#mapGlow)"/>
+            <text x="220" y="190" text-anchor="middle" fill="#E2E8F0" font-size="10" font-weight="700">Berlin</text>
+            <text x="220" y="205" text-anchor="middle" fill="#94A3B8" font-size="9" font-weight="600">待合作</text>
 
             <!-- Connection lines -->
-            <line x1="175" y1="120" x2="310" y2="118" stroke="rgba(59,130,246,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-            <line x1="310" y1="118" x2="350" y2="165" stroke="rgba(16,185,129,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-            <line x1="175" y1="120" x2="145" y2="148" stroke="rgba(59,130,246,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-            <line x1="175" y1="120" x2="210" y2="110" stroke="rgba(139,92,246,0.1)" stroke-width="1" stroke-dasharray="6 4"/>
+            <line x1="150" y1="110" x2="280" y2="130" stroke="rgba(59,130,246,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
+            <line x1="280" y1="130" x2="400" y2="160" stroke="rgba(16,185,129,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
+            <line x1="400" y1="160" x2="480" y2="120" stroke="rgba(59,130,246,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
+            <line x1="150" y1="110" x2="220" y2="170" stroke="rgba(139,92,246,0.1)" stroke-width="1" stroke-dasharray="6 4"/>
           </svg>
           <div class="map-legend">
             <div class="map-legend-item"><span class="legend-dot" style="background:#3B82F6;"></span> 已覆盖</div>
@@ -406,8 +396,8 @@ window.renderPartnerPage = function(){
           </div>
         </div>
         <div class="map-text">
-          <h3 style="font-size:28px;font-weight:800;color:#F1F5F9;margin-bottom:20px;">本地化市场协同</h3>
-          <p style="color:#94A3B8;line-height:1.8;font-size:16px;margin-bottom:24px;">One Token 正在推进土耳其本地市场协同。欢迎具备社群资源、门店资源、渠道资源、换汇资源的伙伴加入。</p>
+          <h3 style="font-size:28px;font-weight:800;color:#F1F5F9;margin-bottom:20px;">全球化市场协同</h3>
+          <p style="color:#94A3B8;line-height:1.8;font-size:16px;margin-bottom:24px;">One Token 正在推进多地区合作网络。欢迎具备社群、渠道、门店或本地资源的伙伴加入，共同拓展全球数字消费与资产生态。</p>
           <div class="map-stats">
             <div class="map-stat">
               <div class="map-stat-num">5</div>
@@ -443,7 +433,7 @@ window.renderPartnerPage = function(){
                 <div class="store-window">
                   <div class="store-w-item">USD ↔ TRY</div>
                   <div class="store-w-item">开卡服务</div>
-                  <div class="store-w-item">本地取现</div>
+                  <div class="store-w-item">全球法币提现</div>
                 </div>
                 <div class="store-door"></div>
               </div>
@@ -455,9 +445,9 @@ window.renderPartnerPage = function(){
         </div>
         <div class="store-text">
           <span class="partner-label">OFFLINE PARTNERSHIP</span>
-          <h2 style="font-size:32px;font-weight:800;color:#F1F5F9;margin-bottom:20px;">线下门店合作，共建本地生态</h2>
-          <p style="color:#94A3B8;line-height:1.8;font-size:16px;margin-bottom:32px;">深耕本地市场，通过线下门店、法币场景与消费服务节点，共同建立更强的用户信任与本地转化能力。符合条件的合作方，可申请更高等级返佣与区域合作资格。</p>
-          <a class="btn btn-primary partner-btn-glow" onclick="document.getElementById('partnerContact').scrollIntoView({behavior:'smooth'})">联系总部申请门店合作</a>
+          <h2 style="font-size:32px;font-weight:800;color:#F1F5F9;margin-bottom:20px;">线下渠道合作，共建全球生态</h2>
+          <p style="color:#94A3B8;line-height:1.8;font-size:16px;margin-bottom:32px;">通过线下渠道、服务节点与消费场景连接更多用户，建立更强的本地信任与全球化协同能力。符合条件的合作方，可申请更高等级返佣与区域合作资格。</p>
+          <a class="btn btn-primary partner-btn-glow" onclick="document.getElementById('partnerContact').scrollIntoView({behavior:'smooth'})">联系总部申请渠道合作</a>
           <div class="store-contact-quick">
             <a href="https://wa.me/1234567890" target="_blank" class="quick-contact-btn whatsapp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -478,8 +468,8 @@ window.renderPartnerPage = function(){
     <div class="section-inner">
       <div style="text-align:center;margin-bottom:64px;" class="reveal">
         <span class="partner-label">GET STARTED</span>
-        <h2 class="section-title" style="color:#F8FAFC;">准备成为 One Token 土耳其合伙人？</h2>
-        <p class="section-desc" style="margin:0 auto;color:#B0BEC5;">留下你的联系方式，我们将在最短时间内与你沟通合作模式、市场支持与城市机会。</p>
+        <h2 class="section-title" style="color:#F8FAFC;">准备成为 One Token 全球合伙人？</h2>
+        <p class="section-desc" style="margin:0 auto;color:#B0BEC5;">留下你的联系方式，我们将在最短时间内与你沟通合作模式、市场支持与区域机会。</p>
       </div>
       <div class="contact-layout reveal">
         <div class="contact-left">
@@ -532,7 +522,7 @@ window.renderPartnerPage = function(){
             </div>
             <div class="form-group">
               <label>所在城市</label>
-              <input type="text" placeholder="例如：Istanbul, Ankara">
+              <input type="text" placeholder="例如：Dubai, Singapore, London">
             </div>
             <div class="form-group">
               <label>联系方式</label>
