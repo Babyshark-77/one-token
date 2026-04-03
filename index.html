@@ -45,6 +45,7 @@
         </a>
       </div>
     </li>
+    <li><a onclick="showPage('partner')" data-page="partner">合伙人</a></li>
     <li><a onclick="showPage('help')" data-page="help">帮助中心</a></li>
     <li>
       <a>社群 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
@@ -777,6 +778,26 @@
   </div>
 </section>
 
+<!-- Partner CTA Module -->
+<section class="home-partner-cta" id="homePartnerCta">
+  <div class="home-partner-cta-bg"></div>
+  <div class="home-partner-cta-grid"></div>
+  <div class="home-partner-cta-floats">
+    <div class="hpc-float">直推收益<span class="hpc-num">50%</span></div>
+    <div class="hpc-float">合作城市<span class="hpc-num">5+</span></div>
+    <div class="hpc-float">USD 结算<span class="hpc-num">24h</span></div>
+    <div class="hpc-float">合伙人<span class="hpc-num">128+</span></div>
+  </div>
+  <div class="section-inner reveal">
+    <span class="partner-label">PARTNERSHIP</span>
+    <h2 class="section-title" style="color:#F1F5F9;max-width:640px;margin:0 auto 20px;">成为 One Token 土耳其城市合伙人</h2>
+    <p class="section-desc" style="margin:0 auto 40px;color:#94A3B8;text-align:center;">深耕当地市场，分享数字金融红利。享受阶梯返佣、运营支持与区域合作机会。</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a class="btn btn-primary partner-btn-glow" onclick="showPage('partner')">立即了解</a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="reveal">
@@ -801,6 +822,7 @@
 <div class="page" id="page-download"></div>
 <div class="page" id="page-swap-demo"></div>
 <div class="page" id="page-market-demo"></div>
+<div class="page" id="page-partner"></div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -816,6 +838,7 @@
         <a onclick="showPage('upay')">UPAY</a>
         <a onclick="showPage('swap-demo')">闪兑</a>
         <a onclick="showPage('market-demo')">行情</a>
+        <a onclick="showPage('partner')">合伙人</a>
         <a onclick="showPage('download')">下载 App</a>
       </div>
       <div class="footer-col">
@@ -842,5 +865,6 @@
 <script src="website.js"></script>
 <script src="website-wallet-upay.js"></script>
 <script src="website-help-download.js"></script>
+<script src="website-partner.js"></script>
 </body>
 </html>
