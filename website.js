@@ -288,7 +288,7 @@ function initCinematicHero() {
 
 // Global hook for ROI Slider
 window.updateRoiMock = function(val) {
-  document.getElementById('roiConsumption').innerHTML = parseInt(val).toLocaleString() + ' TRY';
+  document.getElementById('roiConsumption').innerHTML = parseInt(val).toLocaleString() + ' U';
   const rebate = (val * 0.00035).toFixed(2);
   const yearly = (rebate * 12).toFixed(2);
   const elRebate = document.getElementById('roiRebate');
