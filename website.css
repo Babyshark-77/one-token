@@ -64,7 +64,7 @@ body {
   transition: transform 0.3s;
 }
 .header-logo:hover .logo-dot { transform: scale(1.1) rotate(-5deg); }
-.header-nav { display: flex; align-items: center; gap: 2px; list-style: none; }
+.header-nav { display: flex; align-items: center; gap: 8px; list-style: none; }
 .header-nav > li { position: relative; }
 .header-nav > li > a {
   padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500;
