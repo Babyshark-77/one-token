@@ -48,6 +48,9 @@ window.showPage = function(id){
   } else if(id === 'market-demo') {
     t.innerHTML = '';
     renderMarketDemoPage();
+  } else if(id === 'partner') {
+    t.innerHTML = '';
+    renderPartnerPage();
   }
 
   t.classList.add('active');
@@ -841,7 +844,7 @@ function initPseudo3D() {
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', function(){
-  ['wallet','upay','help','download','swap-demo','market-demo'].forEach(function(id){
+  ['wallet','upay','help','download','swap-demo','market-demo','partner'].forEach(function(id){
     var el = document.getElementById('page-' + id);
     if(el) el.innerHTML = '';
   });
