@@ -1555,44 +1555,277 @@ body {
 .pillar-2:hover { transform: translateY(-4px); }
 .pillar-3 { bottom: -10px; left: 10px; }
 
-/* ===== Scene 2: Security Control Hub ===== */
-.sec-hub-layout { grid-template-columns: minmax(320px, 1fr) minmax(380px, 1fr); }
-.sec-principle { margin: 28px 0; padding: 20px; border-radius: 16px; background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.15); }
-.principle-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #38BDF8; margin-bottom: 8px; }
-.principle-title { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-.principle-desc { font-size: 14px; color: #94A3B8; line-height: 1.5; }
-.sec-trust-rail { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #64748B; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 20px; }
-.trust-item svg { color: #38BDF8; }
+/* ===== Scene 2: Product Matrix ===== */
+.pm-layout { grid-template-columns: minmax(300px, 0.4fr) minmax(380px, 0.6fr); }
+.pm-summary { font-size: 15px; color: #64748B; line-height: 1.6; margin-bottom: 28px; }
+.pm-bg-layer {
+  background: linear-gradient(160deg, #060B18 0%, #0C1425 35%, #111D35 70%, #0A1628 100%);
+}
+.pm-grid-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 65% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 65% 50%, black 30%, transparent 80%);
+}
+.pm-glow {
+  position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
+}
+.pm-glow-1 {
+  width: 400px; height: 400px; top: 10%; right: 15%;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  animation: pmGlow1 6s ease-in-out infinite;
+}
+.pm-glow-2 {
+  width: 300px; height: 300px; bottom: 10%; left: 40%;
+  background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+  animation: pmGlow2 8s ease-in-out infinite;
+}
+@keyframes pmGlow1 {
+  0%,100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes pmGlow2 {
+  0%,100% { opacity: 0.4; transform: scale(1) translate(0,0); }
+  50% { opacity: 0.8; transform: scale(1.1) translate(10px, -10px); }
+}
 
-.sec-visual { display: flex; align-items: center; justify-content: center; min-height: 480px; }
-.sec-hub { position: relative; width: 100%; min-height: 480px; }
-.hub-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 5; }
-.hub-glow { position: absolute; inset: -40px; border-radius: 32px; background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%); animation: hubBreathe 4s ease-in-out infinite; z-index: -1; }
-@keyframes hubBreathe { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
-.hub-screen { width: 280px; background: rgba(15,23,42,0.9); border: 1px solid rgba(56,189,248,0.2); border-radius: 24px; padding: 28px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-.hub-title { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 16px; text-align: center; letter-spacing: 0.04em; }
-.hub-status { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #10B981; margin-bottom: 20px; justify-content: center; font-weight: 600; }
-.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.status-dot.green { background: #10B981; box-shadow: 0 0 8px rgba(16,185,129,0.5); }
-.hub-row { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.06); }
-.hub-row span { font-size: 12px; color: #64748B; }
-.hub-row strong { font-size: 12px; color: #E2E8F0; }
+/* Product Matrix Visual Zone */
+.pm-visual {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 480px; position: relative;
+}
+.pm-constellation {
+  position: relative; width: 560px; height: 480px;
+}
+.pm-connection-lines {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 1; pointer-events: none;
+}
 
-.sec-orbit { position: absolute; z-index: 10; }
-.orbit-1 { top: 10%; right: -10px; }
-.orbit-2 { bottom: 15%; left: -10px; }
-.orbit-3 { bottom: 5%; right: 5%; }
+/* Product Cards – shared base */
+.pm-card {
+  position: absolute; z-index: 5; cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex; flex-direction: column; align-items: center;
+}
+.pm-card:not(.pm-active) {
+  opacity: 0.7; filter: brightness(0.8);
+}
+.pm-card.pm-active {
+  opacity: 1; filter: brightness(1);
+  z-index: 15;
+}
+.pm-card.pm-dimmed {
+  opacity: 0.35; filter: brightness(0.5);
+}
+.pm-card.pm-active .pm-card-inner {
+  transform: scale(1.04);
+  box-shadow: 0 20px 60px rgba(59,130,246,0.25), 0 0 0 1px rgba(59,130,246,0.3);
+}
 
-/* Shared mockup styles (used by Scene 2 orbits) */
-.sec-ui-mockup { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 16px 20px; color: #fff; transform: translateY(20px); opacity: 0; transition: transform 0.6s ease, opacity 0.6s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-.ch-scene.active .sec-ui-mockup { transform: translateY(0); opacity: 1; }
-.mock-header { display: flex; align-items: center; gap: 12px; }
-.icon-circle { width: 36px; height: 36px; border-radius: 50%; background: rgba(56,189,248,0.1); color: #38BDF8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.m-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-.m-sub { font-size: 11px; color: #94A3B8; }
-.m-toggle { margin-left: auto; width: 44px; height: 24px; background: #10B981; border-radius: 12px; position: relative; }
-.m-knob { position: absolute; width: 20px; height: 20px; background: #fff; border-radius: 50%; right: 2px; top: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+/* Main U-Card */
+.pm-card-main {
+  left: 50%; top: 50%;
+  transform: translate(-50%, -55%);
+}
+.pm-card-inner {
+  border-radius: 18px; overflow: hidden; position: relative;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.pm-card-ucard {
+  width: 220px; height: 140px;
+  background: linear-gradient(135deg, #0F2248 0%, #1A3A6E 40%, #0D2B5C 100%);
+  border: 1px solid rgba(59,130,246,0.35);
+  box-shadow: 0 16px 48px rgba(10,20,50,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+  padding: 18px 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.pm-card-ucard::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(59,130,246,0.12) 0%, transparent 50%, rgba(6,182,212,0.08) 100%);
+  pointer-events: none;
+}
+.pm-card-ucard::after {
+  content: ''; position: absolute; top: -30%; right: -20%; width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.pm-card-chip {
+  width: 32px; height: 24px; border-radius: 5px;
+  background: linear-gradient(135deg, #C9A84C 0%, #F5D27A 50%, #B8962F 100%);
+  border: 1px solid rgba(255,215,0,0.3);
+  position: relative; overflow: hidden;
+}
+.pm-card-chip::after {
+  content: ''; position: absolute; inset: 3px;
+  border: 1px solid rgba(0,0,0,0.15); border-radius: 3px;
+}
+.pm-card-brand {
+  font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+.pm-card-number {
+  font-size: 11px; font-family: 'SF Mono', 'Fira Code', monospace;
+  color: rgba(255,255,255,0.5); letter-spacing: 2px;
+}
+
+/* Card Info (below each card visual) */
+.pm-card-info {
+  text-align: center; margin-top: 10px; max-width: 180px;
+  opacity: 0; transform: translateY(6px);
+  transition: all 0.4s ease;
+}
+.pm-card.pm-active .pm-card-info,
+.pm-card:hover .pm-card-info {
+  opacity: 1; transform: translateY(0);
+}
+.pm-card-name {
+  font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px;
+}
+.pm-card-desc {
+  font-size: 11px; color: #94A3B8; line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.pm-card-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 10px; margin-top: 6px;
+  letter-spacing: 0.02em;
+}
+.pm-tag-blue { background: rgba(59,130,246,0.15); color: #60A5FA; }
+.pm-tag-cyan { background: rgba(6,182,212,0.15); color: #22D3EE; }
+.pm-tag-slate { background: rgba(148,163,184,0.15); color: #CBD5E1; }
+.pm-tag-purple { background: rgba(139,92,246,0.15); color: #A78BFA; }
+.pm-tag-amber { background: rgba(245,158,11,0.15); color: #FBBF24; }
+
+/* Satellite cards – smaller */
+.pm-card-sat .pm-card-inner {
+  width: 130px; height: 82px; padding: 12px 14px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.pm-card-sat .pm-card-info { max-width: 150px; }
+.pm-card-chip-sm {
+  width: 22px; height: 16px; border-radius: 3px;
+  background: linear-gradient(135deg, #C9A84C, #F5D27A, #B8962F);
+  border: 1px solid rgba(255,215,0,0.2);
+}
+.pm-card-brand-sm {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Virtual Card */
+.pm-card-virtual {
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 50%, #0EA5E9 100%);
+}
+.pm-card-virtual::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Physical Card */
+.pm-card-physical {
+  background: linear-gradient(135deg, #1E293B 0%, #334155 60%, #475569 100%);
+  position: relative;
+}
+.pm-card-stripe {
+  position: absolute; top: 50%; left: 0; right: 0; height: 8px;
+  background: rgba(0,0,0,0.3);
+}
+
+/* NFC Card */
+.pm-card-nfc {
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 60%, #4338CA 100%);
+  position: relative; overflow: hidden;
+  align-items: center !important;
+}
+.pm-nfc-waves {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px;
+}
+.pm-nfc-arc {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  border: 2px solid rgba(167,139,250,0.3);
+  border-radius: 50%;
+  border-left-color: transparent; border-bottom-color: transparent;
+}
+.pm-nfc-arc:nth-child(1) { width: 14px; height: 14px; animation: pmNfcPulse 2s ease-in-out infinite; }
+.pm-nfc-arc:nth-child(2) { width: 22px; height: 22px; animation: pmNfcPulse 2s ease-in-out 0.3s infinite; }
+.pm-nfc-arc:nth-child(3) { width: 30px; height: 30px; animation: pmNfcPulse 2s ease-in-out 0.6s infinite; }
+@keyframes pmNfcPulse {
+  0%,100% { opacity: 0.3; } 50% { opacity: 1; }
+}
+
+/* Hardware Wallet */
+.pm-card-hw {
+  background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #44403C 100%);
+  border-color: rgba(245,158,11,0.15) !important;
+  align-items: center !important; justify-content: center !important;
+}
+.pm-hw-body {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.pm-hw-screen {
+  width: 44px; height: 24px; border-radius: 4px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(245,158,11,0.2);
+  box-shadow: inset 0 0 6px rgba(245,158,11,0.1);
+}
+.pm-hw-buttons {
+  display: flex; gap: 6px;
+}
+.pm-hw-btn {
+  width: 14px; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Satellite positioning */
+.pm-sat-1 { top: 0; left: 8%; }           /* Virtual: top-left */
+.pm-sat-2 { top: 0; right: 8%; }          /* Physical: top-right */
+.pm-sat-3 { bottom: 0; left: 2%; }        /* NFC: bottom-left */
+.pm-sat-4 { bottom: 0; right: 2%; }       /* HW Wallet: bottom-right */
+
+/* Coming Soon Badge */
+.pm-card-badge {
+  position: absolute; top: -4px; right: -4px; z-index: 20;
+  background: linear-gradient(135deg, rgba(139,92,246,0.9), rgba(99,102,241,0.9));
+  color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.05em;
+  padding: 3px 8px; border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+
+/* Hover Tip */
+.pm-hover-tip {
+  position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+  text-align: center; font-size: 13px; color: #64748B;
+  white-space: nowrap;
+  opacity: 0.8; transition: all 0.4s ease;
+  letter-spacing: 0.01em;
+}
+
+/* Float animation for main card */
+.pm-card-main { animation: pmMainFloat 5s ease-in-out infinite; }
+@keyframes pmMainFloat {
+  0%,100% { transform: translate(-50%, -55%); }
+  50% { transform: translate(-50%, -60%); }
+}
+/* Satellite float animations */
+.pm-sat-1 { animation: pmSat1Float 6s ease-in-out infinite; }
+.pm-sat-2 { animation: pmSat2Float 6s ease-in-out 0.5s infinite; }
+.pm-sat-3 { animation: pmSat3Float 7s ease-in-out 1s infinite; }
+.pm-sat-4 { animation: pmSat4Float 7s ease-in-out 1.5s infinite; }
+@keyframes pmSat1Float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pmSat2Float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes pmSat3Float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes pmSat4Float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
 /* ===== Scene 3: Onboarding ===== */
 .ch-onboarding-steps { display: flex; align-items: flex-start; justify-content: center; gap: 16px; margin: 0 auto 48px; max-width: 800px; width: 100%; }
@@ -1818,14 +2051,23 @@ body {
   .roi-data-card { max-width: 100%; margin: 0 auto; text-align: left; }
   .mid-card { display: none; }
   
-  /* Scene 2 mobile */
-  .sec-hub-layout { grid-template-columns: 1fr; }
-  .sec-hub { min-height: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 280px; }
-  .hub-center { position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
-  .hub-glow { display: none; }
-  .sec-orbit { position: relative; width: 100%; max-width: 300px; top: auto; left: auto; right: auto; bottom: auto; margin: 0 auto; }
-  .sec-ui-mockup { transform: translateY(0) !important; opacity: 1 !important; }
-  .sec-visual { min-height: auto; }
+  /* Scene 2 mobile – Product Matrix */
+  .pm-layout { grid-template-columns: 1fr; }
+  .pm-visual { min-height: auto; }
+  .pm-constellation {
+    width: 100%; height: auto;
+    display: flex; flex-direction: column; align-items: center; gap: 24px;
+    position: relative;
+  }
+  .pm-connection-lines { display: none; }
+  .pm-card { position: relative; top: auto; left: auto; right: auto; bottom: auto; transform: none !important; animation: none !important; }
+  .pm-card-main { transform: none !important; }
+  .pm-card-info { opacity: 1; transform: none; }
+  .pm-card:not(.pm-active) { opacity: 0.85; filter: none; }
+  .pm-card-ucard { width: 240px; height: 150px; }
+  .pm-card-sat .pm-card-inner { width: 160px; height: 100px; }
+  .pm-hover-tip { position: relative; bottom: auto; left: auto; transform: none; margin-top: 8px; }
+  .pm-summary { text-align: center; }
   
   /* Scene 3 mobile */
   .ch-onboarding-steps { flex-direction: column; }
