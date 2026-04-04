@@ -307,6 +307,8 @@ var pmTips = {
 };
 
 window.pmHover = function(key) {
+  // Don't process hover if expand is active
+  if(document.getElementById('pmExpandOverlay') && document.getElementById('pmExpandOverlay').classList.contains('active')) return;
   var constellation = document.getElementById('pmConstellation');
   if(!constellation) return;
   var cards = constellation.querySelectorAll('.pm-card');
@@ -327,6 +329,8 @@ window.pmHover = function(key) {
 };
 
 window.pmLeave = function() {
+  // Don't process leave if expand is active
+  if(document.getElementById('pmExpandOverlay') && document.getElementById('pmExpandOverlay').classList.contains('active')) return;
   var constellation = document.getElementById('pmConstellation');
   if(!constellation) return;
   var cards = constellation.querySelectorAll('.pm-card');
@@ -344,6 +348,198 @@ window.pmLeave = function() {
     tip.style.opacity = '0.8';
   }
 };
+
+// ========== PRODUCT CARD EXPAND SYSTEM ==========
+var pmProductData = {
+  ucard: {
+    name: 'U 卡',
+    positioning: '连接充值、消费、奖励与计划管理，是 OneToken 资产流转的核心入口。',
+    intro: '这里展示 U 卡的账户能力、使用路径与核心作用说明。',
+    highlights: ['账户功能说明占位', '消费与奖励说明占位', '管理入口说明占位'],
+    reqs: '这里展示 U 卡开通方式与申请条件。',
+    comingSoon: false,
+    expandClass: 'expand-ucard',
+    cardHTML: '<div class="pm-card-chip"></div><div class="pm-card-brand">OneToken</div><div class="pm-card-number">•••• •••• •••• 8888</div>'
+  },
+  virtual: {
+    name: '虚拟卡',
+    positioning: '即开即用，适合线上支付、订阅服务与全球电商消费。',
+    intro: '这里展示虚拟卡的线上支付能力与适用场景说明。',
+    highlights: ['支付场景占位', '开通速度占位', '使用体验占位'],
+    reqs: '这里展示虚拟卡申请要求与使用说明。',
+    comingSoon: false,
+    expandClass: 'expand-virtual',
+    cardHTML: '<div class="pm-card-chip-sm"></div><div class="pm-card-brand-sm">VIRTUAL</div>'
+  },
+  physical: {
+    name: '实体卡',
+    positioning: '把数字资产带到线下刷卡与全球取现，延展更真实的日常消费场景。',
+    intro: '这里展示实体卡的线下消费与取现能力说明。',
+    highlights: ['线下消费占位', 'ATM 取现占位', '全球支付占位'],
+    reqs: '这里展示实体卡申请条件与发卡说明。',
+    comingSoon: false,
+    expandClass: 'expand-physical',
+    cardHTML: '<div class="pm-card-chip-sm"></div><div class="pm-card-brand-sm">PHYSICAL</div><div class="pm-card-stripe"></div>'
+  },
+  nfc: {
+    name: 'NFC 卡',
+    positioning: '轻触设备即可完成识别与安全交互，用更便携的卡片形态承载高频使用。',
+    intro: '这里展示 NFC 卡的交互方式、便携性与使用方式说明。',
+    highlights: ['轻触交互占位', '高频使用占位', '安全识别占位'],
+    reqs: '该产品尚在规划中，后续开放更多信息。',
+    comingSoon: true,
+    expandClass: 'expand-nfc',
+    cardHTML: '<div class="pm-nfc-waves"><div class="pm-nfc-arc"></div><div class="pm-nfc-arc"></div><div class="pm-nfc-arc"></div></div><div class="pm-card-brand-sm">NFC</div>'
+  },
+  hwwallet: {
+    name: '硬件钱包',
+    positioning: '为更高价值资产提供独立硬件级防护，让长期持有与关键签名更安心。',
+    intro: '这里展示硬件钱包的安全边界与独立设备价值说明。',
+    highlights: ['独立硬件占位', '长期持有占位', '安全确认占位'],
+    reqs: '该产品尚在规划中，后续开放更多信息。',
+    comingSoon: true,
+    expandClass: 'expand-hw',
+    cardHTML: '<div class="pm-hw-body"><div class="pm-hw-screen"></div><div class="pm-hw-buttons"><div class="pm-hw-btn"></div><div class="pm-hw-btn"></div></div></div>'
+  }
+};
+
+var pmExpandedKey = null;
+
+window.pmExpandCard = function(key) {
+  // If currently expanded and clicking same card, close it
+  if(pmExpandedKey === key) {
+    pmCollapseCard();
+    return;
+  }
+
+  pmExpandedKey = key;
+  var data = pmProductData[key];
+  if(!data) return;
+
+  var overlay = document.getElementById('pmExpandOverlay');
+  var constellation = document.getElementById('pmConstellation');
+  var cardArea = document.getElementById('pmExpandCardArea');
+
+  // Populate detail content
+  document.getElementById('pmExpandName').textContent = data.name;
+  document.getElementById('pmExpandPos').textContent = data.positioning;
+  document.getElementById('pmExpandIntro').textContent = data.intro;
+  document.getElementById('pmExpandReqs').textContent = data.reqs;
+
+  // Coming Soon badge
+  var csBadge = document.getElementById('pmExpandCS');
+  csBadge.style.display = data.comingSoon ? 'inline-block' : 'none';
+
+  // Highlights
+  var hlList = document.getElementById('pmExpandHighlights');
+  hlList.innerHTML = '';
+  data.highlights.forEach(function(h) {
+    var li = document.createElement('li');
+    li.textContent = h;
+    hlList.appendChild(li);
+  });
+
+  // CTA
+  var cta = document.getElementById('pmExpandCta');
+  if(data.comingSoon) {
+    cta.textContent = '敬请期待';
+    cta.classList.add('cta-coming-soon');
+    cta.removeAttribute('onclick');
+  } else {
+    cta.textContent = '下载 App';
+    cta.classList.remove('cta-coming-soon');
+    cta.setAttribute('onclick', "showPage('download')");
+  }
+
+  // Build card visual
+  cardArea.innerHTML = '';
+  var cardVisual = document.createElement('div');
+  cardVisual.className = 'pm-expand-card-visual ' + data.expandClass;
+  cardVisual.innerHTML = data.cardHTML;
+  cardArea.appendChild(cardVisual);
+
+  // Mark constellation as expanding
+  constellation.classList.add('pm-expanding');
+
+  // Mark the clicked card
+  constellation.querySelectorAll('.pm-card').forEach(function(c) {
+    c.classList.remove('pm-card-expanded');
+    if(c.dataset.pm === key) {
+      c.classList.add('pm-card-expanded');
+    }
+  });
+
+  // Hide hover tip
+  var tip = document.getElementById('pmHoverTip');
+  if(tip) tip.style.opacity = '0';
+
+  // Show overlay
+  overlay.classList.add('active');
+};
+
+window.pmCollapseCard = function() {
+  if(!pmExpandedKey) return;
+
+  var overlay = document.getElementById('pmExpandOverlay');
+  var constellation = document.getElementById('pmConstellation');
+
+  // Remove expand states
+  overlay.classList.remove('active');
+  constellation.classList.remove('pm-expanding');
+  constellation.querySelectorAll('.pm-card').forEach(function(c) {
+    c.classList.remove('pm-card-expanded');
+  });
+
+  // Restore hover tip
+  var tip = document.getElementById('pmHoverTip');
+  if(tip) {
+    tip.style.opacity = '0.8';
+    tip.textContent = pmTips.ucard;
+  }
+
+  // Reset hover states
+  pmExpandedKey = null;
+  pmLeave();
+};
+
+// Init PM click handlers
+function initPmExpand() {
+  var constellation = document.getElementById('pmConstellation');
+  if(!constellation) return;
+
+  var cards = constellation.querySelectorAll('.pm-card');
+  cards.forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var key = card.dataset.pm;
+      if(key) pmExpandCard(key);
+    });
+  });
+
+  // Close on backdrop click
+  var backdrop = document.getElementById('pmExpandBackdrop');
+  if(backdrop) {
+    backdrop.addEventListener('click', function() {
+      pmCollapseCard();
+    });
+  }
+
+  // Close button
+  var closeBtn = document.getElementById('pmExpandClose');
+  if(closeBtn) {
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      pmCollapseCard();
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape' && pmExpandedKey) {
+      pmCollapseCard();
+    }
+  });
+}
 
 // ========== END CINEMATIC HERO ==========
 function initHomeStory(){
@@ -907,6 +1103,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initReveal();
   initCapMatrix();
   initCinematicHero();
+  initPmExpand();
   initHomeStory();
   initWalletCanvas();
   initPseudo3D();
