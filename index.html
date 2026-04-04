@@ -170,60 +170,118 @@
         </div>
       </div>
       
-      <!-- ======= Slide 2: Security Control Hub ======= -->
+      <!-- ======= Slide 2: Product Matrix ======= -->
       <div class="ch-scene ch-scene-1" data-index="1">
-        <div class="ch-bg-layer" style="background: linear-gradient(160deg, #080E1A 0%, #0F172A 45%, #1A2540 100%);"></div>
-        <div class="ch-content section-inner dark-mode sec-hub-layout">
-          <div class="ch-text-zone sec-text">
-            <h1 class="ch-title">安全感不该只靠承诺，<br>而该来自机制</h1>
-            <div class="sec-principle">
-              <div class="principle-label">核心原则</div>
-              <div class="principle-title">Your Keys, Your Crypto</div>
-              <div class="principle-desc">你的密钥由你掌控。平台不触碰核心资产，不挪用、不代管。</div>
-            </div>
-            <div class="sec-trust-rail">
-              <div class="trust-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> 资产隔离</div>
-              <div class="trust-item" style="font-weight:900;font-style:italic;">VISA / MC</div>
-              <div class="trust-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> PCI-DSS</div>
-            </div>
+        <div class="ch-bg-layer pm-bg-layer">
+          <div class="pm-grid-pattern"></div>
+          <div class="pm-glow pm-glow-1"></div>
+          <div class="pm-glow pm-glow-2"></div>
+        </div>
+        <div class="ch-content section-inner dark-mode pm-layout">
+          <div class="ch-text-zone pm-text">
+            <h1 class="ch-title">OneToken，你的<br>数字资产安全卫士</h1>
+            <p class="ch-subtitle" style="max-width:420px;">从账户到卡片，再到更高等级的安全硬件，OneToken 为数字资产提供更完整的使用方式与安全边界。</p>
+            <p class="pm-summary">一个产品体系，覆盖从日常消费到长期持有的完整生命周期。</p>
             <div class="ch-cta-group">
               <a class="btn btn-primary" onclick="showPage('download')">下载 App</a>
             </div>
           </div>
-          <div class="ch-visual-zone sec-visual">
-            <div class="sec-hub">
-              <div class="hub-center">
-                <div class="hub-glow"></div>
-                <div class="hub-screen">
-                  <div class="hub-title">安全控制中枢</div>
-                  <div class="hub-status"><span class="status-dot green"></span> 所有系统正常</div>
-                  <div class="hub-row"><span>卡片状态</span><strong style="color:#10B981;">Active</strong></div>
-                  <div class="hub-row"><span>最近交易</span><strong>$4.50 · Starbucks</strong></div>
-                  <div class="hub-row"><span>认证方式</span><strong>Face ID</strong></div>
+          <div class="ch-visual-zone pm-visual">
+            <div class="pm-constellation" id="pmConstellation">
+              <!-- Connection Lines SVG -->
+              <svg class="pm-connection-lines" viewBox="0 0 560 480" fill="none">
+                <line x1="280" y1="200" x2="100" y2="60" stroke="url(#pmLine1)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+                <line x1="280" y1="200" x2="460" y2="60" stroke="url(#pmLine2)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+                <line x1="280" y1="200" x2="70" y2="380" stroke="url(#pmLine3)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+                <line x1="280" y1="200" x2="490" y2="380" stroke="url(#pmLine4)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+                <defs>
+                  <linearGradient id="pmLine1" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#3B82F6" offset="0"/><stop stop-color="transparent" offset="1"/></linearGradient>
+                  <linearGradient id="pmLine2" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#06B6D4" offset="0"/><stop stop-color="transparent" offset="1"/></linearGradient>
+                  <linearGradient id="pmLine3" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#8B5CF6" offset="0"/><stop stop-color="transparent" offset="1"/></linearGradient>
+                  <linearGradient id="pmLine4" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#F59E0B" offset="0"/><stop stop-color="transparent" offset="1"/></linearGradient>
+                </defs>
+              </svg>
+
+              <!-- Main Card: U卡 -->
+              <div class="pm-card pm-card-main pm-active" data-pm="ucard" onmouseenter="pmHover('ucard')" onmouseleave="pmLeave()">
+                <div class="pm-card-inner pm-card-ucard">
+                  <div class="pm-card-chip"></div>
+                  <div class="pm-card-brand">OneToken</div>
+                  <div class="pm-card-number">•••• •••• •••• 8888</div>
+                </div>
+                <div class="pm-card-info">
+                  <div class="pm-card-name">U 卡</div>
+                  <div class="pm-card-desc">连接充值、消费、奖励与计划管理，是 OneToken 资产流转的核心入口。</div>
+                  <span class="pm-card-tag pm-tag-blue">账户主枢纽</span>
                 </div>
               </div>
-              <div class="sec-orbit orbit-1 sec-ui-mockup" style="max-width:320px;">
-                <div class="mock-header" style="align-items:flex-start;">
-                  <div class="icon-circle" style="flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-                  <div style="flex:1;"><div class="m-title">卡片安全处置</div><div class="m-sub" style="margin-top:4px;line-height:1.4;">如需停用卡片，可在 App 内提交注销申请</div></div>
-                  <div style="flex-shrink:0;background:rgba(239,68,68,0.15);color:#EF4444;font-size:12px;font-weight:600;padding:4px 10px;border-radius:12px;margin-left:10px;margin-top:2px;cursor:pointer;">注销申请</div>
+
+              <!-- Satellite: 虚拟卡 -->
+              <div class="pm-card pm-card-sat pm-sat-1" data-pm="virtual" onmouseenter="pmHover('virtual')" onmouseleave="pmLeave()">
+                <div class="pm-card-inner pm-card-virtual">
+                  <div class="pm-card-chip-sm"></div>
+                  <div class="pm-card-brand-sm">VIRTUAL</div>
+                </div>
+                <div class="pm-card-info">
+                  <div class="pm-card-name">虚拟卡</div>
+                  <div class="pm-card-desc">即开即用，适合线上支付、订阅服务与全球电商消费。</div>
+                  <span class="pm-card-tag pm-tag-cyan">线上即用</span>
                 </div>
               </div>
-              <div class="sec-orbit orbit-2 sec-ui-mockup" style="transition-delay:.12s">
-                <div class="mock-header">
-                  <div class="icon-circle" style="background:rgba(16,185,129,0.15);color:#10B981;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
-                  <div><div class="m-title">$4.50 Starbucks Intl</div><div class="m-sub">Just now · Airport</div></div>
+
+              <!-- Satellite: 实体卡 -->
+              <div class="pm-card pm-card-sat pm-sat-2" data-pm="physical" onmouseenter="pmHover('physical')" onmouseleave="pmLeave()">
+                <div class="pm-card-inner pm-card-physical">
+                  <div class="pm-card-chip-sm"></div>
+                  <div class="pm-card-brand-sm">PHYSICAL</div>
+                  <div class="pm-card-stripe"></div>
+                </div>
+                <div class="pm-card-info">
+                  <div class="pm-card-name">实体卡</div>
+                  <div class="pm-card-desc">把数字资产带到线下刷卡与全球取现，延展更真实的日常消费场景。</div>
+                  <span class="pm-card-tag pm-tag-slate">线下延展</span>
                 </div>
               </div>
-              <div class="sec-orbit orbit-3 sec-ui-mockup" style="transition-delay:.24s">
-                <div class="mock-header" style="justify-content:center;">
-                  <div style="text-align:center;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5" style="margin-bottom:8px;"><path d="M7 3H5a2 2 0 00-2 2v2m14-4h2a2 2 0 012 2v2M3 17v2a2 2 0 002 2h2m10 0h2a2 2 0 002-2v-2M8 10v2m8-2v2M9 16h6"/></svg>
-                    <div class="m-title">Face ID 确认支付</div>
+
+              <!-- Satellite: NFC卡 -->
+              <div class="pm-card pm-card-sat pm-sat-3" data-pm="nfc" onmouseenter="pmHover('nfc')" onmouseleave="pmLeave()">
+                <div class="pm-card-badge">Coming Soon</div>
+                <div class="pm-card-inner pm-card-nfc">
+                  <div class="pm-nfc-waves">
+                    <div class="pm-nfc-arc"></div>
+                    <div class="pm-nfc-arc"></div>
+                    <div class="pm-nfc-arc"></div>
                   </div>
+                  <div class="pm-card-brand-sm">NFC</div>
+                </div>
+                <div class="pm-card-info">
+                  <div class="pm-card-name">NFC 卡</div>
+                  <div class="pm-card-desc">轻触设备即可完成识别与安全交互，用更便携的卡片形态承载高频使用。</div>
+                  <span class="pm-card-tag pm-tag-purple">轻触交互</span>
+                </div>
+              </div>
+
+              <!-- Satellite: 硬件钱包 -->
+              <div class="pm-card pm-card-sat pm-sat-4" data-pm="hwwallet" onmouseenter="pmHover('hwwallet')" onmouseleave="pmLeave()">
+                <div class="pm-card-badge">Coming Soon</div>
+                <div class="pm-card-inner pm-card-hw">
+                  <div class="pm-hw-body">
+                    <div class="pm-hw-screen"></div>
+                    <div class="pm-hw-buttons">
+                      <div class="pm-hw-btn"></div>
+                      <div class="pm-hw-btn"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pm-card-info">
+                  <div class="pm-card-name">硬件钱包</div>
+                  <div class="pm-card-desc">为更高价值资产提供独立硬件级防护，让长期持有与关键签名更安心。</div>
+                  <span class="pm-card-tag pm-tag-amber">高阶自托管</span>
                 </div>
               </div>
             </div>
+            <!-- Hover Tip -->
+            <div class="pm-hover-tip" id="pmHoverTip">资产使用与奖励管理的统一入口</div>
           </div>
         </div>
       </div>
