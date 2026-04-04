@@ -297,6 +297,54 @@ window.updateRoiMock = function(val) {
   if(elYearly) elYearly.innerText = '~' + yearly + ' U';
 };
 
+// ========== PRODUCT MATRIX HOVER ==========
+var pmTips = {
+  ucard: '资产使用与奖励管理的统一入口',
+  virtual: '更适合高频线上消费',
+  physical: '把数字资产真正带到线下',
+  nfc: '卡片形态的轻量安全交互',
+  hwwallet: '更适合长期持有与高价值资产'
+};
+
+window.pmHover = function(key) {
+  var constellation = document.getElementById('pmConstellation');
+  if(!constellation) return;
+  var cards = constellation.querySelectorAll('.pm-card');
+  cards.forEach(function(c) {
+    if(c.dataset.pm === key) {
+      c.classList.add('pm-active');
+      c.classList.remove('pm-dimmed');
+    } else {
+      c.classList.remove('pm-active');
+      c.classList.add('pm-dimmed');
+    }
+  });
+  var tip = document.getElementById('pmHoverTip');
+  if(tip && pmTips[key]) {
+    tip.textContent = pmTips[key];
+    tip.style.opacity = '1';
+  }
+};
+
+window.pmLeave = function() {
+  var constellation = document.getElementById('pmConstellation');
+  if(!constellation) return;
+  var cards = constellation.querySelectorAll('.pm-card');
+  cards.forEach(function(c) {
+    c.classList.remove('pm-dimmed');
+    if(c.dataset.pm === 'ucard') {
+      c.classList.add('pm-active');
+    } else {
+      c.classList.remove('pm-active');
+    }
+  });
+  var tip = document.getElementById('pmHoverTip');
+  if(tip) {
+    tip.textContent = pmTips.ucard;
+    tip.style.opacity = '0.8';
+  }
+};
+
 // ========== END CINEMATIC HERO ==========
 function initHomeStory(){
   const wrapper = document.getElementById('homeStoryWrapper');
