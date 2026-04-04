@@ -286,6 +286,7 @@
         </div>
       </div>
       
+
       <div class="ch-scene ch-scene-2" data-index="2">
         <div class="ch-bg-layer" style="background: radial-gradient(circle at 30% 70%, rgba(16,185,129,0.05) 0%, transparent 50%), #F8FAFC;"></div>
         <div class="ch-content section-inner full-width-content">
@@ -924,5 +925,50 @@
 <script src="website-wallet-upay.js"></script>
 <script src="website-help-download.js"></script>
 <script src="website-partner.js"></script>
+<!-- Product Detail Expand Overlay (fixed position) -->
+<div class="pm-expand-overlay" id="pmExpandOverlay">
+  <div class="pm-expand-backdrop" id="pmExpandBackdrop"></div>
+  <div class="pm-expand-stage" id="pmExpandStage">
+    <button class="pm-expand-close" id="pmExpandClose" aria-label="关闭">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="pm-expand-card-area" id="pmExpandCardArea"></div>
+    <div class="pm-expand-detail" id="pmExpandDetail">
+      <div class="pm-expand-header">
+        <h3 class="pm-expand-name" id="pmExpandName">U 卡</h3>
+        <span class="pm-expand-badge-cs" id="pmExpandCS" style="display:none;">Coming Soon</span>
+      </div>
+      <p class="pm-expand-positioning" id="pmExpandPos">连接充值、消费、奖励与计划管理，是 OneToken 资产流转的核心入口。</p>
+      <div class="pm-expand-section">
+        <h4 class="pm-expand-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          产品简介
+        </h4>
+        <p class="pm-expand-section-body" id="pmExpandIntro">这里展示该产品的核心用途与适用场景，后续由运营补充正式内容。</p>
+      </div>
+      <div class="pm-expand-section">
+        <h4 class="pm-expand-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          功能亮点
+        </h4>
+        <ul class="pm-expand-highlights" id="pmExpandHighlights">
+          <li>亮点说明占位 01</li>
+          <li>亮点说明占位 02</li>
+          <li>亮点说明占位 03</li>
+        </ul>
+      </div>
+      <div class="pm-expand-section">
+        <h4 class="pm-expand-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          申请要求
+        </h4>
+        <p class="pm-expand-section-body" id="pmExpandReqs">这里展示申请条件、使用门槛或开通方式，后续由运营补充正式内容。</p>
+      </div>
+      <a class="pm-expand-cta" id="pmExpandCta" onclick="showPage('download')">下载 App</a>
+    </div>
+    <div class="pm-expand-eco-line" id="pmExpandEcoLine"></div>
+  </div>
+</div>
+
 </body>
 </html>
