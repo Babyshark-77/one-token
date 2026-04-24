@@ -33,9 +33,12 @@ window.showPage = function(id){
   if(id === 'wallet') {
     t.innerHTML = '';
     renderWalletPage();
-  } else if(id === 'upay') {
+  } else if(id === 'onepay') {
     t.innerHTML = '';
-    renderUpayPage();
+    renderOnepayPage();
+  } else if(id === 'nfc') {
+    t.innerHTML = '';
+    renderNfcPage();
   } else if(id === 'help') {
     t.innerHTML = '';
     renderHelpPage();
@@ -48,6 +51,9 @@ window.showPage = function(id){
   } else if(id === 'market-demo') {
     t.innerHTML = '';
     renderMarketDemoPage();
+  } else if(id === 'referral-campaign') {
+    t.innerHTML = '';
+    renderReferralCampaignPage();
   } else if(id === 'partner') {
     t.innerHTML = '';
     renderPartnerPage();
@@ -682,7 +688,7 @@ function initWalletCanvas(){
     const navY=H-40;
     ctx.fillStyle='rgba(255,255,255,0.05)';
     ctx.fillRect(0,navY,W,40);
-    ['钱包','UPAY','闪兑','行情'].forEach((n,i)=>{
+    ['钱包','ONEPAY','NFC','发现'].forEach((n,i)=>{
       ctx.fillStyle = i===0?'#3B82F6':'#64748B'; ctx.font='10px Inter,sans-serif';
       ctx.fillText(n,24+i*68,navY+24);
     });
@@ -1088,7 +1094,7 @@ function initPseudo3D() {
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', function(){
-  ['wallet','upay','help','download','swap-demo','market-demo','partner'].forEach(function(id){
+  ['wallet','onepay','nfc','help','download','swap-demo','market-demo','partner'].forEach(function(id){
     var el = document.getElementById('page-' + id);
     if(el) el.innerHTML = '';
   });
